@@ -1,0 +1,28 @@
+<h1>Search#user_search</h1>
+<p>Find me in app/views/search/user_search.html.erb</p>
+
+
+<%= form_tag search_user_path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<% if @result %>
+  <% @result.each do |ruser| %>
+    <% @follow = Follow.new unless @follow %>
+    <div>
+      <%= ruser.username %>
+    </div>
+    <%= form_for @follow, url: follow_user_path(ruser.id) do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :follow_id, value: ruser.id %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= @follower %>
