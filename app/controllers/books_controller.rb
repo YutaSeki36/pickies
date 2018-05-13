@@ -85,6 +85,6 @@ class BooksController < ApplicationController
     end
 
     def set_api_url
-      BOOKS_SEARCH_API_URL = "https://www.googleapis.com/books/v1/volumes?q="
+      @BOOKS_SEARCH_API_URL = "https://www.googleapis.com/books/v1/volumes?q="
     end
 end
