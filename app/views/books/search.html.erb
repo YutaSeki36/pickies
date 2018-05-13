@@ -7,8 +7,8 @@
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
-<%= @result %>
-<% if @result %>
+<% @result %>
+<% if @result["items"] %>
   <% @result["items"].each do |rbook| %>
     <div>
       <%= rbook["volumeInfo"]["title"] %>
