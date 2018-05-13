@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+検索
+
+<%= form_tag search_books_path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<%= @result %>
+<% if @result %>
+  <% @result["items"].each do |rbook| %>
+    <div>
+      <%= rbook["volumeInfo"]["title"] %>
+    </div>
+  <% end %>
+<% end %>

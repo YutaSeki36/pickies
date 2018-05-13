@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :books do
+    collection do
+      get 'search'
+    end
+  end
   # userページ
   resources :user, only: [:index, :show] do
     member do

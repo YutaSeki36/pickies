@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
 
+  has_many :books, through: :book_users
+  has_many :book_users
   has_many :tips
 
   acts_as_followable # フォロワー機能
